@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong Game</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- PeerJS library for P2P connections -->
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+</head>
+<body>
+    <div class="menu-container" id="menuContainer">
+        <h1>PONG GAME</h1>
+        <div class="menu-buttons">
+            <button id="singlePlayerBtn">Single Player (vs AI)</button>
+            <button id="twoPlayerBtn">Two Players</button>
+            <button id="onlineBtn">Play Online</button>
+        </div>
+    </div>
+    
+    <!-- Online Mode Dialog -->
+    <div id="onlineDialog" class="modal">
+        <div class="modal-content">
+            <h2>Online Multiplayer</h2>
+            <div class="modal-buttons">
+                <button id="hostGameBtn">Host Game</button>
+                <button id="joinGameBtn">Join Game</button>
+            </div>
+            <button id="backToMenuBtn" class="back-button">Back to Menu</button>
+        </div>
+    </div>
+    
+    <!-- Host Game Dialog -->
+    <div id="hostGameDialog" class="modal">
+        <div class="modal-content">
+            <h2>Host Game</h2>
+            <div class="game-password-container">
+                <p>Share this password with your friend:</p>
+                <div class="password-display">
+                    <span id="gamePassword"></span>
+                    <button id="copyPasswordBtn">Copy</button>
+                </div>
+            </div>
+            <p id="hostStatusMsg">Waiting for opponent to connect...</p>
+            <button id="cancelHostBtn" class="back-button">Cancel</button>
+        </div>
+    </div>
+    
+    <!-- Join Game Dialog -->
+    <div id="joinGameDialog" class="modal">
+        <div class="modal-content">
+            <h2>Join Game</h2>
+            <div class="game-password-container">
+                <p>Enter the game password:</p>
+                <input type="text" id="passwordInput" placeholder="Enter password">
+                <button id="connectBtn">Connect</button>
+            </div>
+            <p id="joinStatusMsg"></p>
+            <button id="cancelJoinBtn" class="back-button">Cancel</button>
+        </div>
+    </div>
+    
+    <div class="game-container" id="gameContainer" style="display: none;">
+        <div id="score">0 : 0</div>
+        <canvas id="pongCanvas" width="800" height="400"></canvas>
+        <div class="controls">
+            <p>Player 1: W (up), S (down)</p>
+            <p id="player2Controls">Player 2: Arrow Up, Arrow Down</p>
+            <button id="startButton">Start Game</button>
+            <button id="resetButton">Reset Game</button>
+            <button id="menuButton">Back to Menu</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
